@@ -1,64 +1,55 @@
 import ttkbootstrap as ttk
 from tkinter import *
+from menu.menu import Menu
 from PIL import Image, ImageTk
-from roundbutton import RoundButton
-from images.LISTA import *
-from menu import Menu
+from images.img import *
 
 class App:
 
     global root
-    root = ttk.Window(themename='solar')
-    # root.geometry('500x400')
+    root = ttk.Window()
 
-    GERENCIAR_D = ImageTk.PhotoImage(Image.open(GERENCIAR_DEFAULT))
-    MENU_D = ImageTk.PhotoImage(Image.open(MENU_DEFAULT))
-    FINANCEIRO_D = ImageTk.PhotoImage(Image.open(FINANCEIRO_DEFAULT))
+    visibility = ImageTk.PhotoImage(Image.open(visibility_img))
+    add = ImageTk.PhotoImage(Image.open(add_img))
+    edit = ImageTk.PhotoImage(Image.open(edit_img))
+    delete = ImageTk.PhotoImage(Image.open(delete_img))
+    alarm = ImageTk.PhotoImage(Image.open(alarm_img))
+    calendar = ImageTk.PhotoImage(Image.open(calendar_img))
+    settings = ImageTk.PhotoImage(Image.open(settings_img))
+
+    img_list = (visibility, add, edit, delete, alarm, calendar, settings)
+
+    style = ttk.Style(theme='solar')
 
     IMAGE_LABEL = Label(
         master=root
-    ).grid(column=0, row=0, padx=30)
+    ).grid(column=0, row=0, padx=50)
 
 
-    GERENCIAR_BUTTON = Button(
+    GERENCIAR_BUTTON = ttk.Button(
             master=root,
-            image=GERENCIAR_D,
-            autostyle=False,
-            border=0,
-            background='#002B36',
-            activebackground='#002B36',
+            text='GERENCIAR',
+            bootstyle='light-outline-toolbutton',
+            state='focus',
             command=lambda: print('OK')
         )
+    GERENCIAR_BUTTON.grid(column=1, row=0, padx=10, pady=5, ipadx=60,columnspan=2)
 
-    RoundButton(GERENCIAR_FRONT, GERENCIAR_DEFAULT, GERENCIAR_PRESSED, GERENCIAR_BUTTON)
-    GERENCIAR_BUTTON.grid(column=1, row=0, padx=10, pady=5, columnspan=2)
-
-    MENU_BUTTON = Button(
+    MENU_BUTTON = ttk.Button(
         master=root,
-        image=MENU_D,
-        autostyle=False,
-        border=0,
-        background='#002B36',
-        activebackground='#002B36',
-        command=lambda: Menu(root, App.MENU_BUTTON)
+        text='MENU',
+        bootstyle='light-outline-toolbutton',
+        command=lambda: Menu(root, *App.img_list)
         )
-    
-    RoundButton(MENU_FRONT, MENU_DEFAULT, MENU_PRESSED, MENU_BUTTON)
-    MENU_BUTTON.grid(column=3, row=0, padx=10, pady=5, columnspan=2)
-    # MENU_BUTTON.
+    MENU_BUTTON.grid(column=3, row=0, padx=50, pady=5, ipadx=80, columnspan=3)
 
-    FINANCEIRO_BUTTON = Button(
+    FINANCEIRO_BUTTON = ttk.Button(
         master=root,
-        image=FINANCEIRO_D,
-        autostyle=False,
-        border=0,
-        background='#002B36',
-        activebackground='#002B36',
+        text='FINANCEIRO',
+        bootstyle='light-outline-toolbutton',
         command=lambda: print('OK')
         )
-    
-    RoundButton(FINANCEIRO_FRONT, FINANCEIRO_DEFAULT, FINANCEIRO_PRESSED, FINANCEIRO_BUTTON)
-    FINANCEIRO_BUTTON.grid(column=5, row=0, padx=10, pady=5, columnspan=2)
+    FINANCEIRO_BUTTON.grid(column=6, row=0, padx=10, pady=5, ipadx=60, columnspan=2)
 
 root.mainloop()
 
