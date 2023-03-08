@@ -3,25 +3,29 @@ from tkinter import *
 from .guides.view_guide import View
 
 class Menu:
-    def __init__(self, main:object, frame:object, *args) -> None:
+    def __init__(self, main:object, /, *args, **kwargs) -> None:
         self.main = main
-        self.frame = frame
 
         for arg, img in zip(args, ['visibility', 'add', 'edit', 'delete',
                                'alarm', 'calendar', 'settings']):
             globals()[img] = arg
 
+        for frame, name in zip(list(*kwargs.values()), ['visibility_frame', 'add_frame', 'edit_frame',
+                                           'delete_frame', 'alarm_frame', 'calendar_frame',
+                                           'settings_frame']):
+            globals()[name] = frame
 
         view_button = ttk.Button(
             master=self.main,
             image=globals()['visibility'],
             bootstyle='light',
-            command=lambda: View(self.frame)
+            command=lambda: View(globals()['visibility_frame'])
         ).grid(column=1, row=1, pady=10, padx=14, ipadx=10, ipady=5)
         add_button = ttk.Button(
             master=self.main,
             image=globals()['add'],
             bootstyle='light',
+            # command=
         ).grid(column=2, row=1, pady=10, padx=14, ipadx=12, ipady=5)
         edit_button = ttk.Button(
             master=self.main,

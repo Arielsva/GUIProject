@@ -13,7 +13,8 @@ class View:
 
         expand_tree = ttk.Button(
             master=self.main,
-            bootstyle='solid-toolbutton'
+            bootstyle='solid-toolbutton',
+            command=lambda: self.main.grid_remove()
         ).grid(column=1, row=0, ipadx=4, sticky=W, pady=3)
 
         search_tree = ttk.Entry(
