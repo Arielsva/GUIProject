@@ -1,14 +1,11 @@
 import ttkbootstrap as ttk
 from tkinter import *
-
+from .guides.view_guide import View
 
 class Menu:
-    def __init__(self, main:object, *args) -> None:
+    def __init__(self, main:object, frame:object, *args) -> None:
         self.main = main
-
-        menu_frame = ttk.Frame(
-            master=self.main
-        ).grid(row=1, column=1)
+        self.frame = frame
 
         for arg, img in zip(args, ['visibility', 'add', 'edit', 'delete',
                                'alarm', 'calendar', 'settings']):
@@ -16,45 +13,38 @@ class Menu:
 
 
         view_button = ttk.Button(
-            master=menu_frame,
+            master=self.main,
             image=globals()['visibility'],
-            bootstyle='success',
-            command=lambda: print('ok')
+            bootstyle='light',
+            command=lambda: View(self.frame)
         ).grid(column=1, row=1, pady=10, padx=14, ipadx=10, ipady=5)
         add_button = ttk.Button(
-            master=menu_frame,
+            master=self.main,
             image=globals()['add'],
-            bootstyle='success',
+            bootstyle='light',
         ).grid(column=2, row=1, pady=10, padx=14, ipadx=12, ipady=5)
         edit_button = ttk.Button(
-            master=menu_frame,
+            master=self.main,
             image=globals()['edit'],
-            bootstyle='success',
+            bootstyle='light',
         ).grid(column=3, row=1, pady=10, padx=14, ipadx=12, ipady=5)
         delete_button = ttk.Button(
-            master=menu_frame,
+            master=self.main,
             image=globals()['delete'],
-            bootstyle='success',
+            bootstyle='light',
         ).grid(column=4, row=1, pady=10, padx=14, ipadx=10, ipady=5)
         time_button = ttk.Button(
-            master=menu_frame,
+            master=self.main,
             image=globals()['alarm'],
-            bootstyle='success',
+            bootstyle='light',
         ).grid(column=5, row=1, pady=10, padx=14, ipadx=10, ipady=5)
         calendar_button = ttk.Button(
-            master=menu_frame,
+            master=self.main,
             image=globals()['calendar'],
-            bootstyle='success',
+            bootstyle='light',
         ).grid(column=6, row=1, pady=10, padx=14, ipadx=12, ipady=5)
         config_button = ttk.Button(
-            master=menu_frame,
+            master=self.main,
             image=globals()['settings'],
-            bootstyle='success',
+            bootstyle='light',
         ).grid(column=7, row=1, pady=10, padx=14, ipadx=13, ipady=5)
-
-
-
-    
-    
-    
-    pass

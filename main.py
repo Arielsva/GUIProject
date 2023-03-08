@@ -19,12 +19,18 @@ class App:
 
     img_list = (visibility, add, edit, delete, alarm, calendar, settings)
 
-    style = ttk.Style(theme='solar')
+    style = ttk.Style(theme='darkly')
 
     IMAGE_LABEL = Label(
         master=root
     ).grid(column=0, row=0, padx=50)
 
+    #MenuFrames
+    
+    visibility_frame = ttk.Frame(
+        master=root,
+        # bootstyle='light'
+    )
 
     GERENCIAR_BUTTON = ttk.Button(
             master=root,
@@ -39,7 +45,7 @@ class App:
         master=root,
         text='MENU',
         bootstyle='light-outline-toolbutton',
-        command=lambda: Menu(root, *App.img_list)
+        command=lambda: Menu(root, App.visibility_frame, *App.img_list)
         )
     MENU_BUTTON.grid(column=3, row=0, padx=50, pady=5, ipadx=80, columnspan=3)
 
@@ -53,5 +59,3 @@ class App:
 
 root.mainloop()
 
-class Gerenciar:
-    pass
