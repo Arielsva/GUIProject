@@ -1,6 +1,8 @@
 import ttkbootstrap as ttk
 from tkinter import *
 from .guides.view_guide import View
+from .guides.add_guide import Add
+
 
 class Menu:
     def __init__(self, main:object, /, *args, **kwargs) -> None:
@@ -12,7 +14,7 @@ class Menu:
 
         for frame, name in zip(list(*kwargs.values()), ['visibility_frame', 'add_frame', 'edit_frame',
                                            'delete_frame', 'alarm_frame', 'calendar_frame',
-                                           'settings_frame']):
+                                           'settings_frame', 'visual_frame']):
             globals()[name] = frame
 
         view_button = ttk.Button(
@@ -25,7 +27,7 @@ class Menu:
             master=self.main,
             image=globals()['add'],
             bootstyle='light',
-            # command=
+            command=lambda: Add(globals()['add_frame'], globals()['visual_frame'])
         ).grid(column=2, row=1, pady=10, padx=14, ipadx=12, ipady=5)
         edit_button = ttk.Button(
             master=self.main,
