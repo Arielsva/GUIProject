@@ -17,11 +17,11 @@ class Edit(Add):
         self.student = globals()['student_frame']
         self.class_f = globals()['class_frame']
 
-        self.main.grid(column=0, row=2, columnspan=7, sticky=NSEW)
+        self.main.grid(column=0, row=2, columnspan=8, sticky=NSEW)
 
-        self.student.grid(column=0, row=1, columnspan=7, stick=NSEW)
+        self.student.grid(column=0, row=1, stick=NSEW)
 
-        self.class_f.grid(column=0, row=1, columnspan=7, sticky=NSEW)
+        self.class_f.grid(column=0, row=1, sticky=NSEW)
 
         def invoke(self):
             return super().__init__(frame=self.student, visual_frame_I=self.complement,
@@ -35,11 +35,20 @@ class Edit(Add):
             self.options.grid(column=5, row=0, columnspan=3, padx=50, pady=10, stick=NSEW)
 
 
+        def class_f(self):
+            pass
+
+
         option_menu = ttk.Menu()
 
         option_menu.add_command(
             label='ALUNO(A)',
             command=lambda: student(self)
+        )
+
+        option_menu.add_command(
+            label='TURMA',
+            command=lambda: class_f(self)
         )
 
         edit_option_menu = ttk.Menubutton(

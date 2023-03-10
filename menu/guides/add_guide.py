@@ -11,9 +11,10 @@ class Add:
         self.complement = ttk.Frame(master=self.main)
         self.options = ttk.Frame(master=self.main)
 
-        self.main.grid(column=0, row=2, columnspan=7, sticky=NSEW)
+        self.main.grid(column=0, row=2, columnspan=8, stick=EW)
 
-        self.complement.grid(column=0, row=0, sticky=NSEW)
+
+        self.complement.grid(column=0, row=0, columnspan=1, sticky=NSEW)
 
         
         name_entry = ttk.Entry(
@@ -52,7 +53,7 @@ class Add:
         #
 
         self.options.configure(bootstyle='secondary')
-        self.options.grid(column=1, row=0, padx=50, stick=NSEW)
+        self.options.grid(column=1, row=0, padx=55, stick=NSEW)
 
 
         class_button = ttk.Menubutton(
@@ -75,7 +76,7 @@ class Add:
         level_button = ttk.Menubutton(
             master=self.options,
             bootstyle='light'
-        ).grid(column=0, row=2, padx=10, pady=10, ipadx=10, columnspan=2, sticky=EW)
+        ).grid(column=0, row=2, padx=10, pady=10, ipadx=27, columnspan=2, sticky=EW)
 
         date_entry = ttk.DateEntry(
             master=self.options,
@@ -83,5 +84,4 @@ class Add:
         ).grid(column=0, row=3, padx=10, pady=10, ipadx=27, columnspan=2, sticky=EW)
 
         def clear_grid(self):
-            self.complement.grid_remove()
-            self.options.grid_remove()
+            self.main.grid_remove()
