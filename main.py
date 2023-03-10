@@ -53,10 +53,15 @@ class MainMenu(App):
     calendar_frame = ttk.Frame(master=root)
     settings_frame = ttk.Frame(master=root)
 
-    visual_frame = ttk.Frame(master=root)
+    visual_frame_I = ttk.Frame(master=root)
+    visual_frame_II = ttk.Frame(master=root)
+
+    student_frame = ttk.Frame(master=edit_frame)
+    class_frame = ttk.Frame(master=edit_frame)
 
     frame_list = (visibility_frame, add_frame, edit_frame, delete_frame,
-                  alarm_frame, calendar_frame, settings_frame, visual_frame)
+                  alarm_frame, calendar_frame, settings_frame, visual_frame_I,
+                  visual_frame_II, student_frame, class_frame)
     
     MENU_BUTTON = ttk.Button(
         master=root,
